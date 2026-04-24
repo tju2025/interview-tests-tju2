@@ -1,13 +1,22 @@
 package org.example.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
 public class PassengerService {
 
-    public List<Passenger> filterPassengersByType(List<Passenger> people, PassengerType... passengerType)
-    {
-        throw new UnsupportedOperationException ("Implement function that filters passengers by given types");
+    public List<Passenger> filterPassengersByType(List<Passenger> people, PassengerType... passengerTypes) {
+        List<Passenger> result = new ArrayList<>();
+        List<PassengerType> types = Arrays.asList(passengerTypes);
+
+        for (Passenger p : people) {
+            if (types.contains(p.getType())) {
+                result.add(p);
+            }
+        }
+        return result;
     }
 
     public List<Passenger> filterPassengersByFareAsInt(List<Passenger> people, int fareTo)
